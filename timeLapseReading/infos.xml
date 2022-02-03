@@ -5,5 +5,5 @@
     <version>1.0</version>
     <date>03/02/2022</date>
     <site>http://re7net.com</site>
-    <description><![CDATA[affiche le temps de lecture estimé (basé sur 220 mots minutes)]]></description>
+    <description><![CDATA[affiche le temps de lecture estimé. Basé sur une valeur de 220 mots minutes par défaut, cette valeur est configurable via la page de configuration du plugin.]]></description>
 </document>
