@@ -42,9 +42,9 @@
 				 else {$tplSec = ""; }
 				
 			#template minutes =  $tplMin
-				 if (gmdate("i", $perSeconds) <=0) {$tplMin = $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->lang('L_AVERAGE_READING_TIME') . $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->lang('L_LESS_TAN_A_MINUTE')  ;
+				 if (gmdate("i", $perSeconds) <=0) {$tplMin = $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_AVERAGE_READING_TIME') . $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_LESS_TAN_A_MINUTE')  ;
 				 $tplSec = "";}
-				 else {$tplMin = $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->lang('L_AVERAGE_READING_TIME') .ltrim(gmdate("i", $perSeconds),'0') . $var['nbMin']; }
+				 else {$tplMin = $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_AVERAGE_READING_TIME') .ltrim(gmdate("i", $perSeconds),'0') . $var['nbMin']; }
 			
 			
 			#generation template affichage 
