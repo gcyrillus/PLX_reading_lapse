@@ -5,5 +5,5 @@ donne une estimation du temps de lecture d'un article sur une base de 220 Mots/m
 - Activez le plugin
 - Inserer dans vos templates le code suivant ou vous souhaitez voir affiché le temps de lecture estimé:
 
-`<?php $plxShow->plxMotor->plxPlugins->aPlugins["timeLapseReading"]->showReadingtime();  ?>`
+`<?php if (eval($plxMotor->plxPlugins->callHook('showReadingtime'))) return; ?>`
 
