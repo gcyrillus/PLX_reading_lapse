@@ -5,6 +5,7 @@
 	
     if(!empty($_POST)) {
         $plxPlugin->setParam('nbWords', $_POST['nbWords'], 'numeric'); 
+        $plxPlugin->setParam('frontText', $_POST['frontText'], 'string'); 
 		$plxPlugin->setParam('nbMin', $_POST['nbMin'], 'string'); 
 		$plxPlugin->setParam('nbSec', $_POST['nbSec'], 'string'); 
 		$plxPlugin->setParam('nbShowSec', $_POST['nbShowSec'], 'numeric'); 
@@ -17,6 +18,7 @@
 	$var['nbMin'		] = $plxPlugin->getParam('nbMin'		)=='' ? ' min ' 													: $plxPlugin->getParam('nbMin'			);
 	$var['nbSec'		] = $plxPlugin->getParam('nbSec'		)=='' ? ' sec ' 													: $plxPlugin->getParam('nbSec'			);
 	$var['nbShowSec'	] = $plxPlugin->getParam('nbShowSec'	)=='' ? 1	 														: $plxPlugin->getParam('nbShowSec'		);
+	$var['frontText'	] = $plxPlugin->getParam('frontText'	)=='' ? $plxPlugin->getLang('L_AVERAGE_READING_TIME') 				: $plxPlugin->getParam('frontText'		);
 	$var['formatInfos'	] = $plxPlugin->getParam('formatInfos'	)=='' ? '<span class="tempsLecture">#_estimateReadingTime</span>'	: $plxPlugin->getParam('formatInfos'	);
 ?>
 <style>form {
@@ -48,6 +50,7 @@ input[type="submit"]{
 <fieldset>
 <legend>Configuration</legend>
     <label><?php echo $plxPlugin->getLang('L_NB_WORDS_PER_MIN') ?>	:</label> <input type="text" name="nbWords" size="4" value="<?php  echo $var['nbWords'		] ?>" />
+    <label><?php echo $plxPlugin->getLang('L_DISPLAY_TEXT') 	?>	:</label> <input type="text" name="frontText" size="50" value="<?php  echo $var['frontText'	] ?>" />
     <label><?php echo $plxPlugin->getLang('L_FORMAT_INFOS') ?>		:</label> <textarea name="formatInfos" cols="55" rows="1"><?php  echo $var['formatInfos'	] ?></textarea>
     <label><?php echo $plxPlugin->getLang('L_TPL_NB_MIN') ?>		:</label> <input type="text" name="nbMin" size="10" value="<?php  echo $var['nbMin'			] ?>" />
     <label><?php echo $plxPlugin->getLang('L_TPL_NB_SEC') ?>		:</label> <input type="text" name="nbSec" size="10" value="<?php  echo $var['nbSec'			] ?>" />

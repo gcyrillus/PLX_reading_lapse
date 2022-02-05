@@ -20,6 +20,7 @@
 				$var['nbMin'] = $this->getParam('nbMin')=='' ? ' min ' 	: $this->getParam('nbMin');
 				$var['nbSec'] = $this->getParam('nbSec')=='' ? ' sec ' 	: $this->getParam('nbSec');
 				$var['nbShowSec'] = $this->getParam('nbSec')=='' ? 1 	: $this->getParam('nbShowSec');
+				$var['frontText'] = $this->getParam('frontText') =='' ? $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_AVERAGE_READING_TIME') : $this->getParam('frontText');
 				$var['formatInfos'] = $this->getParam('formatInfos')=='' ? '<span class="tempsLecture">#_estimateReadingTime</span>': $this->getParam('formatInfos');
 				$format = $var['formatInfos'];
 			
@@ -42,15 +43,15 @@
 				 else {$tplSec = ""; }
 				
 			#template minutes =  $tplMin
-				 if (gmdate("i", $perSeconds) <=0) {$tplMin = $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_AVERAGE_READING_TIME') . $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_LESS_TAN_A_MINUTE')  ;
+				 if (gmdate("i", $perSeconds) <=0) {$tplMin = $var['frontText'].' '. $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_LESS_TAN_A_MINUTE')  ;
 				 $tplSec = "";}
-				 else {$tplMin = $plxMotor->plxPlugins->aPlugins["timeLapseReading"]->getLang('L_AVERAGE_READING_TIME') .ltrim(gmdate("i", $perSeconds),'0') . $var['nbMin']; }
-			
+				 else {$tplMin = $var['frontText'].' '.ltrim(gmdate("i", $perSeconds),'0') . $var['nbMin']; }
+				
 			
 			#generation template affichage 
-				if($format =='') {$format='<span class="tempsLecture">#_estimateReadingTime</span>';}
 				$readingTinfos =  $tplMin . $tplSec ;
-				$infosToPrint= str_replace('#_estimateReadingTime', $readingTinfos, $format);
+				if($format =='') {$format='<span class="tempsLecture"> #_estimateReadingTime </span>';}
+				$infosToPrint= preg_replace('#\#_estimateReadingTime#is', $readingTinfos, $format);
 			
 			#affichage temps lecture estimé
 				echo $infosToPrint; 
