@@ -24,6 +24,8 @@ Ceci est modifiable sans oublier ni ne modifier le code d'affichage de base :<co
 <dd>2 Champs vous permettent de choisir ce que vous souhaiter afficher derriere les minutes et secondes estimées. Par défaut c'est <b>min</b> et <b>sec</b>, vous pouvez vider ces champs pour ne rien afficher ou ne mettre que <b>:</b> pour le champs des minutes par exemple.</dd>
 <dt>Afficher les secondes</dt>
 <dd>Vous pouvez omettre l'affichage des secondes</dd>
+<dt>reinitialisation</dt>
+<dd>Un bouton de reinitialisation permet d'un click de reprendre la configuration par défaut du plugin.
 </dl>
 <h3>Affichage Dans le théme</h3>
 <p>Pour afficher le temps de lecture estimé d'un article, il vous faut inserer dans le fichier du théme le code suivant:
