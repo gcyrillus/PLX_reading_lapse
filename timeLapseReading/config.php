@@ -57,18 +57,20 @@ button:not(:hover) {
 	color:initial
 }</style>
 <form action="parametres_plugin.php?p=<?php echo $plugin ?>" method="post">
-<fieldset>
-<legend>Configuration</legend>
-    <label><?php echo $plxPlugin->getLang('L_NB_WORDS_PER_MIN') ?>	:</label> <input type="text" name="nbWords" size="4" value="<?php  echo $var['nbWords'		] ?>" />
-    <label><?php echo $plxPlugin->getLang('L_DISPLAY_TEXT') 	?>	:</label> <input type="text" name="frontText" size="50" value="<?php  echo $var['frontText'	] ?>" />
-    <label><?php echo $plxPlugin->getLang('L_FORMAT_INFOS') ?>		:</label> <textarea name="formatInfos" cols="55" rows="1"><?php  echo $var['formatInfos'	] ?></textarea>
-    <label><?php echo $plxPlugin->getLang('L_TPL_NB_MIN') ?>		:</label> <input type="text" name="nbMin" size="10" value="<?php  echo $var['nbMin'			] ?>" />
-    <label><?php echo $plxPlugin->getLang('L_TPL_NB_SEC') ?>		:</label> <input type="text" name="nbSec" size="10" value="<?php  echo $var['nbSec'			] ?>" />
-    <label><?php echo $plxPlugin->getLang('L_TPL__SHOW_NB_SEC') ?>	:</label> <?php plxUtils::printSelect('nbShowSec',array('1'=>L_YES,'0'=>L_NO),$var['nbShowSec']); ?>
-	<?php echo plxToken::getTokenPostMethod() ?>
-	<label><?php echo $plxPlugin->getLang('L_SAVE_TO_UPDATE') ?>	:</label><input type="submit" name="submit" value="<?php $plxPlugin->lang('L_SAVE') ?>" />
-	<label><?php echo $plxPlugin->getLang('L_PLUGIN_DEFAULT_SETTING') ?>	:</label><button id="reset"><?php echo $plxPlugin->getLang('L_RESET_TO_DEFAULT') ?></button>
+	<fieldset>
+		<legend>Configuration</legend>
+			<label><?php echo $plxPlugin->getLang('L_NB_WORDS_PER_MIN') ?>	:</label> <input type="text" name="nbWords" size="4" value="<?php  echo $var['nbWords'		] ?>" />
+			<label><?php echo $plxPlugin->getLang('L_DISPLAY_TEXT') 	?>	:</label> <input type="text" name="frontText" size="50" value="<?php  echo $var['frontText'	] ?>" />
+			<label><?php echo $plxPlugin->getLang('L_FORMAT_INFOS') ?>		:</label> <textarea name="formatInfos" cols="55" rows="1"><?php  echo $var['formatInfos'	] ?></textarea>
+			<label><?php echo $plxPlugin->getLang('L_TPL_NB_MIN') ?>		:</label> <input type="text" name="nbMin" size="10" value="<?php  echo $var['nbMin'			] ?>" />
+			<label><?php echo $plxPlugin->getLang('L_TPL_NB_SEC') ?>		:</label> <input type="text" name="nbSec" size="10" value="<?php  echo $var['nbSec'			] ?>" />
+			<label><?php echo $plxPlugin->getLang('L_TPL__SHOW_NB_SEC') ?>	:</label> <?php plxUtils::printSelect('nbShowSec',array('1'=>L_YES,'0'=>L_NO),$var['nbShowSec']); ?>
+			<?php echo plxToken::getTokenPostMethod() ?>
+			<label><?php echo $plxPlugin->getLang('L_SAVE_TO_UPDATE') ?>	:</label><input type="submit" name="submit" value="<?php $plxPlugin->lang('L_SAVE') ?>" />
+			<label><?php echo $plxPlugin->getLang('L_PLUGIN_DEFAULT_SETTING') ?>	:</label><button id="reset"><?php echo $plxPlugin->getLang('L_RESET_TO_DEFAULT') ?></button>
+			<label for="code"><?php echo $plxPlugin->getLang('L_CODE_TO_INSERT_TO_TPLS') ?>:</label><textarea id="code" readonly cols="68" rows="1" style="resize:none;height:1.8em;">&lt;?php if (eval($plxMotor->plxPlugins->callHook('showReadingtime'))) return; ?&gt;</textarea>
 	</fieldset>
+
 </form>
 
 
@@ -81,6 +83,16 @@ function reset() {
 		resetFields[i].value= defautSettings[resetFields[i].getAttribute('name')]
 	}
 }
+function copy() {
+  let code = document.querySelector("#code");  
+  let statut = document.querySelector("[for='code']");
+  code.select();
+  document.execCommand("copy");
+  statut.innerHTML="<?php echo $plxPlugin->getLang('L_CODE_TO_INSERT_COPIED') ?>";
+}
 document.querySelector("#reset").addEventListener ("click", reset, false);	
+document.querySelector("#code").addEventListener ("click", copy, false);	
+
+
 })();
 </script>

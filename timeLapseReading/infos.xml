@@ -2,8 +2,8 @@
 <document>
     <title><![CDATA[Time Lapse Reading]]></title>
     <author><![CDATA[G.Cyrillus]]></author>
-    <version>1.0.4</version>
-    <date>04/02/2022</date>
+    <version>1.0.5</version>
+    <date>06/02/2022</date>
     <site>http://re7net.com</site>
     <description><![CDATA[affiche le temps de lecture estimé à l'aide d'un hook à ajouté dans le théme. Basé sur une valeur de 220 mots minutes par défaut. Le format d'affichage est flexible et configurable.]]></description>
 </document>
