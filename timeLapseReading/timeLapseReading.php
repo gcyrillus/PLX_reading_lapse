@@ -7,13 +7,24 @@
 		parent::__construct($default_lang);
 		
 		# déclaration des hooks
+		$this->addHook('IndexBegin', 'IndexBegin');
 		$this->addHook('showReadingtime', 'showReadingtime');
         
         # droits pour accèder à la page config.php du plugin
 		$this->setConfigProfil(PROFIL_ADMIN);
     }
 		
-		#desc hook function
+
+        # désactive de force la compression gzip 
+        public function  IndexBegin() {
+            echo '<?php ';
+			?>
+			$plxMotor->aConf['gzip'] ='0';
+            ?>
+			<?php           
+        }		
+		
+		
 		public function showReadingtime() {
 			#valeur par défaut si plugin non configuré
 				$var['nbWords'] = $this->getParam('nbWords')=='' ? '220' 	: $this->getParam('nbWords');
