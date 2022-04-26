@@ -31,7 +31,7 @@
 					$words=str_word_count(strip_tags($plxMotor->plxRecord_arts->f('chapo') . $plxMotor->plxRecord_arts->f('content')));
 			
 			#calcul moyenne/sec    
-				$perSeconds =  $words / ($var['nbWords']/60) ;
+				$perSeconds =  ceil($words / ($var['nbWords']/60)) ;
 				
 				
 			#extraction durée
