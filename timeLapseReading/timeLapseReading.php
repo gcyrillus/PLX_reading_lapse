@@ -68,4 +68,4 @@
 				echo $infosToPrint; 
 		}
 }
-?>	
+?>
